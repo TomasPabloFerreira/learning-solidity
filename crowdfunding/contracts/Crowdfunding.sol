@@ -25,6 +25,7 @@ contract Crowdfunding {
         );
         _;
     }
+
     modifier receiverCannotFundHisOwnProject() {
         require(msg.sender != receiver, 'Project receiver cannot fund himself');
         _;
@@ -35,6 +36,6 @@ contract Crowdfunding {
         onlyIfGoalWasNotReached
     {
         funds += msg.value;
-        receiver.transfer(msg.value);
+        payable(receiver).transfer(msg.value);
     }
 }
