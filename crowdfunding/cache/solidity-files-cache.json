@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/tomasferreira/workspace/blockchain/learning-solidity/crowdfunding/contracts/Crowdfunding.sol": {
-      "lastModificationDate": 1637359140411,
-      "contentHash": "71d1e4923cac1f8192ad4c17461875da",
+      "lastModificationDate": 1637361366586,
+      "contentHash": "db1b5daeff1c9cc3567de3993efd25f6",
       "sourceName": "contracts/Crowdfunding.sol",
       "solcConfig": {
         "version": "0.8.4",

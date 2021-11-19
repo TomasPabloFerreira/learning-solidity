@@ -18,14 +18,23 @@ contract Crowdfunding {
         receiver = payable(msg.sender);
     }
 
-    function canReceive() private view returns (bool) {
-        return (funds < fundraisingGoal);
+    modifier onlyIfGoalWasNotReached() {
+        require(
+            funds < fundraisingGoal,
+            'Fundraising goal was already reached'
+        );
+        _;
+    }
+    modifier receiverCannotFundHisOwnProject() {
+        require(msg.sender != receiver, 'Project receiver cannot fund himself');
+        _;
     }
 
-    function fundProject() public payable {
-        if(canReceive()){
-            funds += msg.value;
-            receiver.transfer(msg.value);
-        }
+    function fundProject() public payable
+        receiverCannotFundHisOwnProject
+        onlyIfGoalWasNotReached
+    {
+        funds += msg.value;
+        receiver.transfer(msg.value);
     }
 }
